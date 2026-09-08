@@ -9,7 +9,7 @@ Proyecto Django de ejemplo.
 
 > **Importante:** no olvides crear la base de datos `miempresa3_db` en MySQL antes de ejecutar las migraciones. Por ejemplo:
 > ```sql
-> CREATE DATABASE miempresa3_db;
+> CREATE DATABASE miempresa4_db;
 > ```
 
 ## Crear el entorno virtual
