@@ -126,3 +126,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Variables para especificar donde se aloja mi pagina de login
+LOGIN_URL = 'login'
+
+# Variable para especificar el redirect pos login
+LOGIN_REDIRECT_URL='home'
