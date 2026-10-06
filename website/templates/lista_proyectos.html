@@ -15,7 +15,7 @@
             <a href="{% url 'editar_proyecto' proyecto.pk %}">Editar</a>
             <a href="{% url 'eliminar_proyecto' proyecto.pk %}">Eliminar</a>
         </li>
-        {% else %}
+        {% empty %}
         <li>No hay proyectos registrados.</li>
         {% endfor %}
     </ul>

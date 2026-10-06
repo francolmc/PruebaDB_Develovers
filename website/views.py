@@ -13,7 +13,7 @@ def crear_proyecto(request):
         form = ProyectoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('lista_proyectos')
     else:
         form = ProyectoForm()
         return render(request, 'crear_proyecto.html', {'form': form})
@@ -25,7 +25,7 @@ def editar_proyecto(request, pk):
         form = ProyectoForm(request.POST, instance=proyecto)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('lista_proyectos')
     else:
         form = ProyectoForm(instance=proyecto)
     return render(request, 'crear_proyecto.html', { 'form': form })
@@ -35,7 +35,7 @@ def eliminar_proyecto(request, pk):
     proyecto = get_object_or_404(Proyecto, pk = pk)
     if request.method == 'POST':
         proyecto.delete()
-        return redirect('home')
+        return redirect('lista_proyectos')
     return render(request, 'eliminar_proyecto.html', { 'proyecto': proyecto })
 
 @login_required
