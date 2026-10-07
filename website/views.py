@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import ProyectoForm
+from .forms import ProyectoForm, RegistroForm
 from .models import Proyecto
+from django.contrib.auth import login
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -42,3 +44,15 @@ def eliminar_proyecto(request, pk):
 def lista_proyectos(request):
     proyectos = Proyecto.objects.all() # SELECT * FROM proyecto
     return render(request, 'lista_proyectos.html', { 'proyectos': proyectos })
+
+def registro(request):
+    if request.method == 'POST':
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, f'Bienvenido, {user.username}.')
+            return redirect('home')
+    else:
+        form = RegistroForm()
+    return render(request, 'registro.html', {'form': form})
